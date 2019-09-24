@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from './components/HelloWorld';
 import FansForm from './components/FansForm';
+import Forms from './components/Forms'
 
 Vue.use(VueRouter);
 
@@ -12,9 +13,16 @@ const routes = [
         component: Home
     },
     {
-        path: '/edit',
+        path: '/edit/:tab?',
         name: 'Edit',
-        component: FansForm
+        component: FansForm,
+        children: [
+            {
+                path: 'form',
+                name: 'Forms',
+                component: Forms
+            }
+        ]
     }
 ]
 

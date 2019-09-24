@@ -1,19 +1,12 @@
 <template>
         <div class="flex-two-col">
             <div class="flex-two-col__first">
-                <h2>My channels</h2>
-                <ul>
-                    <li>First Channel</li>
-                    <li>Second Channel</li>
-                </ul>
-                <h2>Assigned Channels</h2>
-                <ul>
-                    <li>Third Channel</li>
-                </ul>
+                <SideMenu title="Navigation" :links="links" />
             </div>
             <div class="flex-two-col__second">
-                <h2>Edit Profile</h2>
-                {{text}}
+                <transition name='fade' mode='in-out'>
+                    <router-view />
+                </transition>
                 <button v-on:click="updateText">Click to Die</button>
                 <input type="text" name="name" id="name" :value="this.$store.state.edit.value" v-on:input="handleChange">
             </div>
@@ -21,11 +14,25 @@
 </template>
 
 <script>
+import SideMenu from './UI/SideMenu'
+
+const links = [
+    {
+        title: 'Form',
+        to: 'edit/form',
+        id: 1
+    }
+]
+
 export default {
     name: 'FansForm',
+    components: {
+        SideMenu
+    },
     data: function() {
         return {
-            text: ''
+            text: '',
+            links
         }
     },
     computed: {
@@ -58,20 +65,12 @@ export default {
     &__first {
         min-width: 280px;
         max-width: 280px;
-
-        h2 {
-            padding: 24px 24px 16px;
-        }
-
-        ul {
-            list-style: none;
-        }
+        margin-right: 20px;
     }
 
     &__second {
         flex: 1 1;
         max-width: 880px;
-        padding: 24px;
     }
 }
 </style>

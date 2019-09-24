@@ -24,13 +24,15 @@ export default {
 html, body {
   margin: 0;
 }
+body {
+  background: $background;
+}
 #app {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-main;
-  background: #f4f6f8;
 }
 *, :after, :before {
   padding: 0;
@@ -50,7 +52,7 @@ a {
 }
 
 .content {
-  margin: 64px 50px 0;
+  margin: 89px 50px 0;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s ease;
